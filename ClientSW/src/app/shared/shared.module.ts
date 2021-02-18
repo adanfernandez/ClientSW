@@ -35,7 +35,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
-  declarations: [GuardsComponent],
+  declarations: [GuardsComponent,
+  ],
   imports: [
     CommonModule,
     MatInputModule,
