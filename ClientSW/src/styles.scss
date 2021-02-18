@@ -1,14 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'font-century-gothic.css';
+@import 'font-fresca.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 main {
     font-family: Roboto, Arial, sans-serif;
     margin: 0;
-    padding: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    margin-top: 2%;
+}
+
+body {
+    background-color: #DADED9;
 }
 
 .version-info {
     font-size: 8pt;
     float: right;
     margin: 3%;
+}
+
+.mat-figure {
+    cursor: pointer;
+}
+
+.century-gothic {
+    font-family: sans-serif;
+}
+
+.fresca {
+    font-family: 'Fresca', sans-serif;
+}
+
+.century-gothic {
+    font-family: 'Fresca', 'Courier New', Courier, monospace;
 }

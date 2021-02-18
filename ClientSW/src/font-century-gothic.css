@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Century Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/CenturyGothic/Century-Gothic);
+  src: local('Century Gothic'), url(assets/CenturyGothic/Century-Gothic?#iefix) format('embedded-opentype'), url(assets/CenturyGothic/Century-Gothic) format('truetype'), url(assets/CenturyGothic/Century-Gothic.svg#CenturyGothic) format('svg'), url(assets/CenturyGothic/Century-Gothic) format('woff'), url(assets/CenturyGothic/Century-Gothic) format('woff2');
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/CenturyGothic/Century-Gothic-normal-700) format('truetype'), url(assets/CenturyGothic/Century-Gothic-normal-700) format('woff'), url(assets/CenturyGothic/Century-Gothic-normal-700) format('woff2');
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  font-style: italic;
+  font-weight: 400;
+  src: url(assets/CenturyGothic/Century-Gothic-italic-400) format('truetype'), url(assets/CenturyGothic/Century-Gothic-italic-400) format('woff'), url(assets/CenturyGothic/Century-Gothic-italic-400) format('woff2');
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  font-style: italic;
+  font-weight: 700;
+  src: url(assets/CenturyGothic/Century-Gothic-italic-700) format('truetype'), url(assets/CenturyGothic/Century-Gothic-italic-700) format('woff'), url(assets/CenturyGothic/Century-Gothic-italic-700) format('woff2');
+}
+
