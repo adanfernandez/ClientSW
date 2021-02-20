@@ -32,14 +32,39 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatButtonModule} from '@angular/material/button';
+import {PortalModule} from '@angular/cdk/portal';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import {CdkTableModule} from '@angular/cdk/table';
+import {CdkTreeModule} from '@angular/cdk/tree';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatTreeModule} from '@angular/material/tree';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [GuardsComponent,
   ],
   imports: [
     CommonModule,
+    PortalModule,
+    ScrollingModule,
     MatInputModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatNativeDateModule,
+    MatRippleModule,
+    OverlayModule,
+    MatTreeModule,
     MatAutocompleteModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -66,7 +91,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ],
   exports: [
     FormsModule,
