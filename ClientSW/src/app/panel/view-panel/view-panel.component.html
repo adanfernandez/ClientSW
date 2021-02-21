@@ -3,7 +3,7 @@
     <input matInput [(ngModel)]="panel.name" name="name">
 </mat-form-field>
 <div cdkDropListGroup>
-    <div>
+    <div class="horizontal-scroll">
         <div class="container " *ngFor="let state of panel.states ">
             <h2>{{state.name}}</h2>
             <div cdkDropList [cdkDropListData]="state.tasks " class="list " (cdkDropListDropped)="drop($event) ">

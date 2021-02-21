@@ -65,12 +65,19 @@ export class ViewPanelComponent implements OnInit {
       tasks: []
     }
 
+    const state4: State= {
+      id: 3,
+      name: 'State 4',
+      id_panel: 0,
+      tasks: []
+    }
+
 
     this.panel = {
       id: 0,
       name: "Panel de prueba",
       id_user: 0,
-      states: [state1, state2, state3]
+      states: [state1, state2, state3, state4]
     }
     this.orderTasks();
   }

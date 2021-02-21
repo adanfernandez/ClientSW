@@ -88,3 +88,9 @@ body {
 .right {
     float: right
 }
+
+.horizontal-scroll {
+    background-color: #B6B8B6;
+    overflow: auto;
+    white-space: nowrap;
+}
