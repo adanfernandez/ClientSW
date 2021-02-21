@@ -1,7 +1,7 @@
 <div>
     Bienvenido ...
     <mat-grid-list cols="3" rowHeight="1:1">
-        <div>
+        <div [routerLink]="['/panel/view']">
             <mat-grid-tile>
                 <mat-grid-list cols="fa-rotate-180">
                     <div>
@@ -13,7 +13,7 @@
                 </mat-grid-list>
             </mat-grid-tile>
         </div>
-        <div>
+        <div [routerLink]="['/panel/create']">
             <mat-grid-tile>
                 <mat-grid-list cols="fa-rotate-180">
                     <div>
