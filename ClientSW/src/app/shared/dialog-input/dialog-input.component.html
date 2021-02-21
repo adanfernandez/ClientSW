@@ -1,0 +1,11 @@
+<h1>{{data.welcomeMessage}}</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>{{data.paramName}}</mat-label>
+        <input matInput [(ngModel)]="inputValue" name="inputValue">
+    </mat-form-field>
+</div>
+<div>
+    <button class="button-red" (click)="onNoClick()">Salir</button>
+    <button class="button-green right">Guardar</button>
+</div>

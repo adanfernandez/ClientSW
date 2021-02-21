@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Panel } from 'src/app/model/panel';
 import { State } from 'src/app/model/state';
 import { Task } from 'src/app/model/task';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogInputComponent } from '../../shared/dialog-input/dialog-input.component';
 
 @Component({
   selector: 'app-view-panel',
@@ -14,7 +16,7 @@ export class ViewPanelComponent implements OnInit {
 
   panel: Panel;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -77,7 +79,7 @@ export class ViewPanelComponent implements OnInit {
       id: 0,
       name: "Panel de prueba",
       id_user: 0,
-      states: [state1, state2, state3, state4]
+      states: [state1, state2]
     }
     this.orderTasks();
   }
@@ -109,4 +111,24 @@ export class ViewPanelComponent implements OnInit {
     })
     console.log(this.panel.states);
   }  
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogInputComponent, {
+      width: '25%',
+      data: {welcomeMessage: "Añadir un estado", paramName: "Nombre del estado"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+/*
+  addState($event) {
+    const state = {
+
+    }
+    this.panel.states.push(state)
+  }*/
+
 }

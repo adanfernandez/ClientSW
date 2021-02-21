@@ -46,11 +46,13 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DialogInputComponent } from './dialog-input/dialog-input.component';
 
 @NgModule({
-  declarations: [GuardsComponent,
+  declarations: [GuardsComponent, DialogInputComponent,
   ],
   imports: [
+    FormsModule,
     CommonModule,
     PortalModule,
     ScrollingModule,

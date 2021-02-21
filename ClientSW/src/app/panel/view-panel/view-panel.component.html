@@ -2,6 +2,9 @@
     <mat-label>Nombre del panel</mat-label>
     <input matInput [(ngModel)]="panel.name" name="name">
 </mat-form-field>
+
+<button class="button-add-state" (click)="openDialog()">Añadir estado</button>
+
 <div cdkDropListGroup>
     <div class="horizontal-scroll">
         <div class="container " *ngFor="let state of panel.states ">
