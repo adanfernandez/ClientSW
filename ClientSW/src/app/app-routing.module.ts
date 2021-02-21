@@ -18,6 +18,10 @@ const routes: Routes = [
       loadChildren: () => import('./register/register.module').then(module => module.RegisterModule)
   },
   {
+      path: CommonUrls.PANEL,
+      loadChildren: () => import('./panel/panel.module').then(module => module.PanelModule)
+  },
+  {
     path: CommonUrls.NONE,
     redirectTo: CommonUrls.HOME,
     pathMatch: 'full',

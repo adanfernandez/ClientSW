@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
+import { PanelModule } from './panel/panel.module';
 
 
 
@@ -25,7 +26,8 @@ import { SharedModule } from './shared/shared.module';
     RouterModule,
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

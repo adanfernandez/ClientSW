@@ -5,4 +5,5 @@ export class CommonUrls {
     public static readonly HOME = 'home';
     public static readonly ANY = '**';
     public static readonly NOT_FOUND = 'not-found';
+    public static readonly PANEL = 'panel';
 }
