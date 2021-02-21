@@ -119,16 +119,13 @@ export class ViewPanelComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-
+      if(result) {
+        const state: State = {
+          name: result,
+          tasks: []
+        }
+        this.panel.states.push(state);
+      }
     });
   }
-/*
-  addState($event) {
-    const state = {
-
-    }
-    this.panel.states.push(state)
-  }*/
-
 }

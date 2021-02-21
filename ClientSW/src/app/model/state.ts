@@ -1,8 +1,8 @@
 import { Task } from "./task";
 
 export interface State {
-    id: number;
+    id?: number;
     name: string;
-    id_panel: number;
-    tasks: Task[];
+    id_panel?: number;
+    tasks?: Task[];
 }

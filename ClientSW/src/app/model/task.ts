@@ -1,9 +1,9 @@
 export interface Task {
-    id: number;
+    id?: number;
     title: string;
     location?: string;
-    expirationDate: Date,
+    expirationDate?: Date,
     description?: string,
-    place: number,
+    place?: number,
     id_state: number
 }
