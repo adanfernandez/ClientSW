@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonUrls } from '../shared/common-urls';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  public urlPanelCreation = CommonUrls.PANEL + CommonUrls.CREATE;
+  public urlPanelView = CommonUrls.PANEL + CommonUrls.VIEW;
+
+
 
   constructor() { }
 
