@@ -112,7 +112,7 @@ export class ViewPanelComponent implements OnInit {
     console.log(this.panel.states);
   }  
 
-  openDialog(): void {
+  openDialogState(): void {
     const dialogRef = this.dialog.open(DialogInputComponent, {
       width: '25%',
       data: {welcomeMessage: "Añadir un estado", paramName: "Nombre del estado"}
@@ -125,6 +125,23 @@ export class ViewPanelComponent implements OnInit {
           tasks: []
         }
         this.panel.states.push(state);
+      }
+    });
+  }
+
+  openDialogTask(index: number): void {
+    const dialogRef = this.dialog.open(DialogInputComponent, {
+      width: '25%',
+      data: {welcomeMessage: "Añadir una tarea", paramName: "Nombre de la tarea"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        const task: Task = {
+          title: result,
+          id_state: 0
+        }
+        this.panel.states[index].tasks.push(task);
       }
     });
   }
