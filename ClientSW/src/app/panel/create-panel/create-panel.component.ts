@@ -9,7 +9,22 @@ export class CreatePanelComponent implements OnInit {
 
   constructor() { }
 
+  states: String[] = [];
+
+  stateToAdd: String = "";
+
   ngOnInit(): void {
+    this.states.push("Estado 1");
+    this.states.push("Estado 2");
+    this.states.push("Estado 3");
+    this.states.push("Estado 4");
   }
 
+  public addState() {
+    this.states.push(this.stateToAdd);
+  }
+
+  public removeState(i: number) {
+    this.states.splice(i,1);
+  }
 }
