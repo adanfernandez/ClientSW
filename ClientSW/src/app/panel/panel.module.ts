@@ -5,6 +5,7 @@ import { CreatePanelComponent } from './create-panel/create-panel.component';
 import {  RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ListPanelComponent } from './list-panel/list-panel.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    SharedModule
+    SharedModule,
+    DragDropModule
   ],
   exports: [
     RouterModule

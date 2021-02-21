@@ -45,6 +45,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [GuardsComponent,
@@ -92,7 +93,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    DragDropModule
   ],
   exports: [
     FormsModule,
