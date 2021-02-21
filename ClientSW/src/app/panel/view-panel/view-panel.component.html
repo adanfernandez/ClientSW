@@ -1,27 +1,18 @@
+<mat-form-field class="input">
+    <mat-label>Nombre del panel</mat-label>
+    <input matInput [(ngModel)]="panel.name" name="name">
+</mat-form-field>
 <div cdkDropListGroup>
     <div>
-        <div class="container">
-            <h2>To do</h2>
-
-            <div cdkDropList [cdkDropListData]="todo" class="list" (cdkDropListDropped)="drop($event)">
-                <div class="box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        <div class="container " *ngFor="let state of panel.states ">
+            <h2>{{state.name}}</h2>
+            <div cdkDropList [cdkDropListData]="state.tasks " class="list " (cdkDropListDropped)="drop($event) ">
+                <div class="box " *ngFor="let item of state.tasks " cdkDrag>{{item.title}}</div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="container">
-            <h2>Done</h2>
-
-            <div cdkDropList [cdkDropListData]="done" class="list" (cdkDropListDropped)="drop($event)">
-                <div class="box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-            </div>
-        </div>
-
-        <div class="container">
-            <h2>Doing</h2>
-
-            <div cdkDropList [cdkDropListData]="doing" class="list" (cdkDropListDropped)="drop($event)">
-                <div class="box" *ngFor="let item of doing" cdkDrag>{{item}}</div>
-            </div>
-        </div>
-        <div>
-        </div>
+<div>
+    <button class="button-green right">Editar tablero</button>
+</div>

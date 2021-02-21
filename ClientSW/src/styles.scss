@@ -43,6 +43,7 @@ body {
     color: white;
     padding: 15px 32px;
     font-size: 16px;
+    cursor: pointer
 }
 
 .img {
@@ -82,4 +83,8 @@ body {
     font-size: 16px;
     margin: 1%;
     cursor: pointer;
+}
+
+.right {
+    float: right
 }
