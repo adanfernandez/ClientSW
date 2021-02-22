@@ -2,34 +2,37 @@
     <mat-label>Nombre del panel</mat-label>
     <input matInput [(ngModel)]="panel.name" name="name">
 </mat-form-field>
-
-<button class="button-add" (click)="openDialogState()">Añadir estado</button>
-
+<button class="button-add" (click)="openDialogState()">
+    Nuevo estado
+</button>
+<div class="right">
+    <button class="button-green right margin-top">Confirmar cambios</button>
+</div>
 <div cdkDropListGroup>
     <div class="horizontal-scroll">
         <div class="container " *ngFor="let state of panel.states; let i = index">
             <div class="text-center">
                 <span><h3>{{state.name}}</h3></span>
                 <div class="div-options">
-                    <button class="button-transparent pointer">
+                    <button class="button-transparent pointer" (click)="removeState(i)">
                         <img src="assets/img/delete-icon.png">
                     </button>
-                    <button class="button-add" (click)="openDialogTask(i)">Añadir tarea</button>
+                    <button class="button-add" (click)="openDialogTask(i)">Nueva tarea</button>
                 </div>
             </div>
             <div cdkDropList [cdkDropListData]="state.tasks " class="list" (cdkDropListDropped)="drop($event) ">
                 <div class="box margin-top" *ngFor="let item of state.tasks " cdkDrag>
                     {{item.title}}
-                    <button class="button-transparent pointer">
-                        <img src="assets/img/delete-icon.png">
-                    </button>
-
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div>
-    <button class="button-green right margin-top">Editar tablero</button>
+    <div class="margin-top">
+        <div id="even" cdkDropList [cdkDropListData]="deleted" class="example-list" (cdkDropListDropped)="dropRemove($event)">
+            <div class="box box-remove-task text-center">
+                <h4>Arrastra una tarea aquí para borrarla
+                </h4>
+            </div>
+        </div>
+    </div>
 </div>

@@ -16,6 +16,8 @@ export class ViewPanelComponent implements OnInit {
 
   panel: Panel;
 
+  deleted = [];
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -50,14 +52,14 @@ export class ViewPanelComponent implements OnInit {
       id: 0,
       name: 'State 1',
       id_panel: 0,
-      tasks: [task1, task2]
+      tasks: [task1, task2, task3]
     }
 
     const state2: State= {
       id: 1,
       name: 'State 2',
       id_panel: 0,
-      tasks: [task3]
+      tasks: []
     }
 
     const state3: State= {
@@ -107,9 +109,22 @@ export class ViewPanelComponent implements OnInit {
       const idState = state.id;
       state.tasks.map(task => {
         task.id_state = idState;
+        task.place = event.currentIndex;
       })
     })
     console.log(this.panel.states);
+  }  
+
+
+  dropRemove(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
   }  
 
   openDialogState(): void {
@@ -144,5 +159,15 @@ export class ViewPanelComponent implements OnInit {
         this.panel.states[index].tasks.push(task);
       }
     });
+  }
+
+
+  public removeState(i: number) {
+    this.panel.states.splice(i,1);
+  }
+
+  public removeTasks(i: number, event) {
+    debugger;
+    this.panel.states[i].tasks.splice(i,1);
   }
 }

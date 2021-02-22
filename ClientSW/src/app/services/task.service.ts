@@ -13,19 +13,19 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   public getTasksByState(state: State) {
-    return this.http.get(Urls.API_GATEWAY + CommonUrls.PANEL + CommonUrls.STATE + state.id);
+    return this.http.get(Urls.API_GATEWAY + CommonUrls.PANEL + CommonUrls.TASK + state.id);
   }
 
   public deleteTask(task: Task) {
-        return this.http.delete(Urls.API_GATEWAY + CommonUrls.STATE + task.id);
+        return this.http.delete(Urls.API_GATEWAY + CommonUrls.TASK + task.id);
   }
 
   public updateTask(task: Task) {
-    return this.http.put(Urls.API_GATEWAY + CommonUrls.STATE,  task);
+    return this.http.put(Urls.API_GATEWAY + CommonUrls.TASK,  task);
   }
 
   public saveTask(task: Task) {
-    return this.http.post(Urls.API_GATEWAY + CommonUrls.STATE,  task);
+    return this.http.post(Urls.API_GATEWAY + CommonUrls.TASK,  task);
   }
 
 }
