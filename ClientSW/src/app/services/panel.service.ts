@@ -25,10 +25,4 @@ export class PanelService {
   public savePanel(panel: Panel) {
     return this.http.post(Urls.API_GATEWAY + CommonUrls.PANEL,  panel);
   }
-
-  public getStatesByPanel(panel: Panel) {
-    return this.http.get(Urls.API_GATEWAY + CommonUrls.PANEL + CommonUrls.STATE + panel.id);
-
-  }
-
 }
