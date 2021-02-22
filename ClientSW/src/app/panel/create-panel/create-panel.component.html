@@ -11,14 +11,14 @@
             <mat-label>Añadir estado</mat-label>
             <input matInput [(ngModel)]="stateToAdd" name="stateToAdd">
         </mat-form-field>
-        <button class="button-add-state round" (click)="addState()">+</button>
+        <button class="button-add round" (click)="addState()">+</button>
     </div>
     <div>
         <div *ngFor="let state of states; let i = index">
             <span>
                 {{state}}
             </span>
-            <button class="button-delete-state" (click)="removeState(i)">-</button>
+            <button class="button-delete" (click)="removeState(i)">-</button>
         </div>
     </div>
 </form>

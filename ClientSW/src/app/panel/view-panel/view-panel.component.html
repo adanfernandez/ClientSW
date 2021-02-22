@@ -3,17 +3,22 @@
     <input matInput [(ngModel)]="panel.name" name="name">
 </mat-form-field>
 
-<button class="button-add-state" (click)="openDialogState()">Añadir estado</button>
+<button class="button-add" (click)="openDialogState()">Añadir estado</button>
 
 <div cdkDropListGroup>
     <div class="horizontal-scroll">
         <div class="container " *ngFor="let state of panel.states; let i = index">
-            <div>
+            <div class="text-center">
                 <span>{{state.name}}</span>
-                <button class="button-add-state round" (click)="openDialogTask(i)">+</button>
+                <button class="button-delete">Eliminar estado</button>
+                <button class="button-add round" (click)="openDialogTask(i)">+</button>
             </div>
-            <div cdkDropList [cdkDropListData]="state.tasks " class="list " (cdkDropListDropped)="drop($event) ">
-                <div class="box " *ngFor="let item of state.tasks " cdkDrag>{{item.title}}</div>
+            <div cdkDropList [cdkDropListData]="state.tasks " class="list" (cdkDropListDropped)="drop($event) ">
+                <div class="box margin-top" *ngFor="let item of state.tasks " cdkDrag>
+                    {{item.title}}
+                    <button class="button-delete">-</button>
+
+                </div>
             </div>
         </div>
     </div>
