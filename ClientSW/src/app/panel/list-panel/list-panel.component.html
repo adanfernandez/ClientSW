@@ -1,1 +1,13 @@
-<p>list-panel works!</p>
+<div>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let panel of panels">
+            <div class="width-100 pointer" [routerLink]="'/' + urlPanelView">
+                <mat-card>
+                    <div class="text-center">
+                        {{panel?.name}} - {{panel?.states.length}} estados
+                    </div>
+                </mat-card>
+            </div>
+        </mat-list-item>
+    </mat-list>
+</div>

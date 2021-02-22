@@ -21,7 +21,9 @@ export class CreatePanelComponent implements OnInit {
   }
 
   public addState() {
-    this.states.push(this.stateToAdd);
+    if(this.stateToAdd) {
+      this.states.push(this.stateToAdd);
+    }
     this.stateToAdd = "";
   }
 
