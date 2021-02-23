@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GuardsComponent } from './guards/guards.component';
 
 
 import {MatInputModule} from '@angular/material/input';
@@ -49,7 +48,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { DialogInputComponent } from './dialog-input/dialog-input.component';
 
 @NgModule({
-  declarations: [GuardsComponent, DialogInputComponent,
+  declarations: [DialogInputComponent,
   ],
   imports: [
     FormsModule,

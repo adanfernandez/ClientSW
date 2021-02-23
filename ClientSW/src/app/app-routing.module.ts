@@ -3,10 +3,12 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { CommonUrls } from './shared/common-urls';
 import { HomeComponent } from './home/home.component';
 import { NotFoundModule } from './not-found/not-found.module';
+import { GuardsComponent } from './shared/guards/guards.component';
 
 const routes: Routes = [
   {
     path: CommonUrls.HOME,
+    canActivate: [GuardsComponent],
     loadChildren: () => import('./home/home.module').then(module => module.HomeModule)
   },
   {
@@ -19,6 +21,7 @@ const routes: Routes = [
   },
   {
       path: CommonUrls.PANEL,
+      canActivate: [GuardsComponent],
       loadChildren: () => import('./panel/panel.module').then(module => module.PanelModule)
   },
   {

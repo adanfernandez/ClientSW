@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from '../../model/user';
+import { UserService } from '../../services/user.service';
 
-@Component({
-  selector: 'app-guards',
-  templateUrl: './guards.component.html',
-  styleUrls: ['./guards.component.scss']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class GuardsComponent implements OnInit {
+export class GuardsComponent implements  CanActivate {
 
-  constructor() { }
+  constructor(private router: Router, private userService: UserService) { }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    debugger;
 
-  ngOnInit(): void {
+    if (!this.userService.user) {
+      // redirect to some view explaining what happened
+      this.router.navigateByUrl('/login');
+      return false;
+    } else {
+      return true;
+    }
   }
-
 }

@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
       password: this.password
     }).subscribe( res => {
       localStorage.setItem("user", this.email);
+      this.userService.user = {
+        email: this.email
+      }
       this.router.navigateByUrl(CommonUrls.HOME);
     }, err => {
       this.errMessage = "Credenciales erróneas";
