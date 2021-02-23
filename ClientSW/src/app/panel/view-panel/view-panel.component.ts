@@ -16,7 +16,8 @@ export class ViewPanelComponent implements OnInit {
 
   panel: Panel;
 
-  deleted = [];
+  tasksDeleted = [];
+  statesDeleted = [];
 
   constructor(public dialog: MatDialog) { }
 
@@ -163,11 +164,42 @@ export class ViewPanelComponent implements OnInit {
 
 
   public removeState(i: number) {
+    this.statesDeleted.push(this.panel.states[i])
     this.panel.states.splice(i,1);
   }
 
-  public removeTasks(i: number, event) {
-    debugger;
-    this.panel.states[i].tasks.splice(i,1);
+
+  public saveChanges() {
+    this.tasksDeleted.filter(task => {
+      task.new;
+    })
+
+    const statesToCreate = this.panel.states.filter(state=> {
+      state.new;
+    });
+
+    const statestoUpdate = this.panel.states.filter(state=> {
+      !state.new;
+    });
+
+    const statesToDelete = this.statesDeleted.filter(state => {
+      !state.new;
+    });
+
+    const tasksToCreate = [];
+    const tasksToUpdate = [];
+    Array.from(this.panel.states).forEach(state => {
+      tasksToCreate.concat(state.tasks.filter(task => {
+        task.new;
+      }));
+      tasksToUpdate.concat(state.tasks.filter(task => {
+        !task.new;
+      }));
+    });
+
+    const tasksToDelete = this.tasksDeleted.filter(task => 
+      !task.new
+    );
+
   }
 }

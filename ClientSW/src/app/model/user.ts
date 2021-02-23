@@ -5,4 +5,5 @@ export interface User {
     surname: string;
     phone: string;
     password: string;
+    new?: boolean;
 }

@@ -5,4 +5,5 @@ export interface State {
     name: string;
     id_panel?: number;
     tasks?: Task[];
+    new?: boolean;
 }

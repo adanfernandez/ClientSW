@@ -5,4 +5,5 @@ export interface Panel {
     name: string;
     id_user: number;
     states: State[];
+    new?: boolean;
 }

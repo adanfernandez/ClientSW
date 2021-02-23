@@ -6,7 +6,7 @@
     Nuevo estado
 </button>
 <div class="right">
-    <button class="button-green right margin-top">Confirmar cambios</button>
+    <button class="button-green right margin-top" (click)="saveChanges()">Confirmar cambios</button>
 </div>
 <div cdkDropListGroup>
     <div class="horizontal-scroll">
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="margin-top">
-        <div id="even" cdkDropList [cdkDropListData]="deleted" class="example-list" (cdkDropListDropped)="dropRemove($event)">
+        <div id="even" cdkDropList [cdkDropListData]="tasksDeleted" class="example-list" (cdkDropListDropped)="dropRemove($event)">
             <div class="box box-remove-task text-center">
                 <h4>Arrastra una tarea aquí para borrarla
                 </h4>
