@@ -1,14 +1,15 @@
 <h2 class="century-gothic">
     Inicio de sesión
 </h2>
+<span *ngIf="errMessage">{{errMessage}}</span>
 <form class="form">
     <mat-form-field class="input">
         <mat-label>Correo electrónico</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="email" name="email">
     </mat-form-field>
     <mat-form-field class="input">
         <mat-label>Contraseña</mat-label>
-        <input matInput type="password">
+        <input matInput type="password" [(ngModel)]="password" name="password">
     </mat-form-field>
     <div class="example-button-row">
         <button class="button-green">Iniciar sesión</button>

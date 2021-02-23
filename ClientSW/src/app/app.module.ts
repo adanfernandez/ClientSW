@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { PanelModule } from './panel/panel.module';
 
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 
@@ -27,7 +28,8 @@ import { PanelModule } from './panel/panel.module';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    PanelModule
+    HttpClientModule,
+    PanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
