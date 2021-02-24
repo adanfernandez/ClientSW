@@ -12,19 +12,19 @@ export class StateService {
   constructor(private http: HttpClient) {}
 
   public getStatesByPanel(panel: Panel) {
-    return this.http.get(Urls.API_GATEWAY + CommonUrls.PANEL + CommonUrls.STATE + panel.id);
+    return this.http.get(`${Urls.API_GATEWAY}/panel/${panel.id}/states`);
   }
 
   public deleteState(state: State) {
-        return this.http.delete(Urls.API_GATEWAY + CommonUrls.STATE + state.id);
+        return this.http.delete(`${Urls.API_GATEWAY}/state/${state.id}`);
   }
 
   public updateState(state: State) {
-    return this.http.put(Urls.API_GATEWAY + CommonUrls.STATE,  state);
+    return this.http.put(`${Urls.API_GATEWAY}/state/`, state);
   }
 
   public savePanel(state: State) {
-    return this.http.post(Urls.API_GATEWAY + CommonUrls.STATE,  state);
+    return this.http.post(`${Urls.API_GATEWAY}/state/`, state);
   }
 
 }

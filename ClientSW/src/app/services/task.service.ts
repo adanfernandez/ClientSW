@@ -13,11 +13,11 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   public getTasksByState(state: State) {
-    return this.http.get(Urls.API_GATEWAY + CommonUrls.PANEL + CommonUrls.TASK + state.id);
+        return this.http.get(`${Urls.API_GATEWAY}/state/${state.id}/tasks`);
   }
 
   public deleteTask(task: Task) {
-        return this.http.delete(Urls.API_GATEWAY + CommonUrls.TASK + task.id);
+        return this.http.delete(`${Urls.API_GATEWAY}/task/${task.id}/states`);
   }
 
   public updateTask(task: Task) {
