@@ -11,18 +11,18 @@ export class PanelService {
   constructor(private http: HttpClient) {}
 
   public getPanelFromUser(user: User) {
-        return this.http.get(Urls.API_GATEWAY + CommonUrls.PANEL + CommonUrls.LIST + user.id);
+    return this.http.get(`${Urls.API_GATEWAY}/panel/user/${user.id}`);
   }
 
   public deletePanel(panel: Panel) {
-        return this.http.delete(Urls.API_GATEWAY + CommonUrls.PANEL + panel.id);
+    return this.http.delete(`${Urls.API_GATEWAY}/panel/${panel.id}`);
   }
 
   public updatePanel(panel: Panel) {
-    return this.http.put(Urls.API_GATEWAY + CommonUrls.PANEL,  panel);
+    return this.http.put(`${Urls.API_GATEWAY}/panel`, panel);
   }
 
   public savePanel(panel: Panel) {
-    return this.http.post(Urls.API_GATEWAY + CommonUrls.PANEL,  panel);
+    return this.http.post(`${Urls.API_GATEWAY}/panel`, panel);
   }
 }
