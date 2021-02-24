@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   email: string = "";
   password: string = "";
   errMessage: string = "";
+  public urlRegister = CommonUrls.REGISTER;
 
   constructor(private userService: UserService, private router: Router) { }
 

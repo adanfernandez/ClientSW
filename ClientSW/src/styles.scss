@@ -122,6 +122,10 @@ body {
     margin-top: 0.1%;
 }
 
+.margin-top-max {
+    margin-top: 10%;
+}
+
 .button-transparent {
     background-size: cover;
     background-position: center;
@@ -160,4 +164,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     /* Support for IE. */
     font-feature-settings: 'liga';
+}
+
+.err {
+    color: red;
 }
