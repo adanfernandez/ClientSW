@@ -14,11 +14,11 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   public login(user: User) {
-      return of(user);
-        //return this.http.post(Urls.API_GATEWAY + CommonUrls.LOGIN, user);
+      //return of(user);
+      return this.http.post(`${Urls.API_GATEWAY}/user/login`, user);
   }
 
   public register(user: User) {
-        return this.http.post(Urls.API_GATEWAY + CommonUrls.REGISTER, user);
+        return this.http.post(`${Urls.API_GATEWAY}/user/register`, user);
   }
 }
