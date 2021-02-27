@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     }).subscribe( res => {
       localStorage.setItem("user", this.email);
+      debugger;
       this.userService.user = {
         email: this.email
       }

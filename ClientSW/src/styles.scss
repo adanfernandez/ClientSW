@@ -90,6 +90,18 @@ body {
     cursor: pointer;
 }
 
+.button-logout {
+    background-color: gray;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .round {
     border-radius: 50%;
 }

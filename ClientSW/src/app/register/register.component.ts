@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
   }
 
   checkData() {
-    debugger;
     if(this.password != this.repPassword) {
       this.errMessage = "Las contraseñas no coinciden";
       return false;

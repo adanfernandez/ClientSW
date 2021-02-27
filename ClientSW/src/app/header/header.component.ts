@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonUrls } from '../shared/common-urls';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +12,15 @@ export class HeaderComponent implements OnInit {
 
   urlHome: string = CommonUrls.HOME;
 
-  constructor() { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    debugger;
+    this.userService.user = null;
+    this.router.navigateByUrl("/login");
   }
 
 }
