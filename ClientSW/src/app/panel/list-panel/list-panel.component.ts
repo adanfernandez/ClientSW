@@ -21,7 +21,6 @@ export class ListPanelComponent implements OnInit {
   public urlPanelView = CommonUrls.PANEL + CommonUrls.VIEW;
 
   ngOnInit(): void {
-    debugger;
     this.panelService.getPanelFromUser(localStorage.getItem("id")).subscribe(
       (res: Panel[]) => {
         this.panels = res;
