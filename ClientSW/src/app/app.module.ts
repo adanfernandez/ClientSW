@@ -10,8 +10,9 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { PanelModule } from './panel/panel.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SettingsComponent } from './settings/settings.component'; 
+import { AuthInterceptor } from './services/AuthInterceptor.service';
 
 
 
@@ -33,7 +34,12 @@ import { SettingsComponent } from './settings/settings.component';
     HttpClientModule,
     PanelModule,
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
