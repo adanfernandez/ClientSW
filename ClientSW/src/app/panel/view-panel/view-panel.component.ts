@@ -95,7 +95,7 @@ export class ViewPanelComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
-    console.log(event.container.data[0]['id']);
+    console.log(event.container.data[0]);
     this.deleteTask(event.container.data[0]['id']);
   }  
 
@@ -145,8 +145,9 @@ export class ViewPanelComponent implements OnInit {
     this.stateService.saveState(state).subscribe();
   }
 
-  deleteState(id) {
-    this.stateService.deleteState(id).subscribe();
+  deleteState(state, i) {
+    this.panel.states.splice(i,1);
+    this.stateService.deleteState(state).subscribe();
   }
 
 

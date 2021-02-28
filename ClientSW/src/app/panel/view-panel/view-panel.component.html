@@ -7,7 +7,7 @@
             <div class="text-center">
                 <span><h3>{{state?.name}}</h3></span>
                 <div class="div-options">
-                    <button class="button-transparent pointer" (click)="deleteState(state)">
+                    <button class="button-transparent pointer" (click)="deleteState(state, i)">
                         <img src="assets/img/delete-icon.png">
                     </button>
                     <button class="button-add" (click)="openDialogTask(i)">Nueva tarea</button>
