@@ -20,14 +20,14 @@ main {
     margin-top: 2%;
 }
 
-body {
-    background-color: #DADED9;
-}
-
 .version-info {
     font-size: 8pt;
     float: right;
     margin: 3%;
+}
+
+body {
+    background-color: #E5DEDE;
 }
 
 .pointer {
@@ -123,11 +123,11 @@ body {
 }
 
 .horizontal-scroll {
-    background-color: #B6B8B6;
+    background-color: #ECECEC;
     overflow: auto;
     white-space: nowrap;
-    max-height: 19em;
-    min-height: 19em;
+    max-height: 25em;
+    min-height: 25em;
 }
 
 .margin-top {

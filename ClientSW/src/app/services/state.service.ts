@@ -6,13 +6,14 @@ import { Urls } from './Urls-back';
 import { CommonUrls } from '../shared/common-urls';
 import { State } from "../model/state";
 
-@Injectable()
-export class StateService {
+@Injectable({
+  providedIn: 'root'
+})export class StateService {
 
   constructor(private http: HttpClient) {}
 
-  public getStatesByPanel(panel: Panel) {
-    return this.http.get(`${Urls.API_GATEWAY}/panel/${panel.id}/states`);
+  public getStatesByPanel(id) {
+    return this.http.get(`${Urls.API_GATEWAY}/panel/${id}/states`);
   }
 
   public deleteState(state: State) {

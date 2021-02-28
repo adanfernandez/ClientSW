@@ -7,13 +7,14 @@ import { CommonUrls } from '../shared/common-urls';
 import { Task } from "../model/task";
 import { State } from "../model/state";
 
-@Injectable()
-export class TaskService {
+@Injectable({
+  providedIn: 'root'
+})export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  public getTasksByState(state: State) {
-        return this.http.get(`${Urls.API_GATEWAY}/state/${state.id}/tasks`);
+  public getTasksByState(id) {
+        return this.http.get(`${Urls.API_GATEWAY}/state/${id}/tasks`);
   }
 
   public deleteTask(task: Task) {

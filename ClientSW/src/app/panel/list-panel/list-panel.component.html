@@ -1,7 +1,7 @@
 <div>
     <mat-list role="list">
         <mat-list-item role="listitem" class="margin-top" *ngFor="let panel of panels">
-            <div class="width-100 pointer" [routerLink]="'/' + urlPanelView">
+            <div class="width-100 pointer" [routerLink]="'/' + urlPanelView + '/' + panel.id">
                 <mat-card>
                     <div class="text-center">
                         {{panel?.name}}

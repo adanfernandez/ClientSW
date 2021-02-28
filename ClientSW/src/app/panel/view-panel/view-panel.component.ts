@@ -5,6 +5,11 @@ import { State } from 'src/app/model/state';
 import { Task } from 'src/app/model/task';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogInputComponent } from '../../shared/dialog-input/dialog-input.component';
+import { ActivatedRoute } from '@angular/router';
+import { PanelService } from '../../services/panel.service';
+import { StateService } from '../../services/state.service';
+import { tap, map } from 'rxjs/operators';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-view-panel',
@@ -19,72 +24,47 @@ export class ViewPanelComponent implements OnInit {
   tasksDeleted = [];
   statesDeleted = [];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private activatedRoute: ActivatedRoute, private panelService: PanelService, private stateService: StateService, private taskService: TaskService) { 
+    console.log("A");
+  }
 
   ngOnInit(): void {
-
-    const task1: Task = {
-      id: 0,
-      title: "Task1",
-      place: 0,
-      expirationDate: new Date(),
-      id_state: 0
-    }
-
-    const task2: Task = {
-      id: 1,
-      title: "Task2",
-      place: 1,
-      expirationDate: new Date(),
-      id_state: 0
-    }
-
-    const task3: Task = {
-      id: 2,
-      title: "Task3",
-      place: 0,
-      expirationDate: new Date(),     
-      id_state: 1
-    }
-
-
-
-    const state1: State= {
-      id: 0,
-      name: 'State 1',
-      id_panel: 0,
-      tasks: [task1, task2, task3]
-    }
-
-    const state2: State= {
-      id: 1,
-      name: 'State 2',
-      id_panel: 0,
-      tasks: []
-    }
-
-    const state3: State= {
-      id: 2,
-      name: 'State 3',
-      id_panel: 0,
-      tasks: []
-    }
-
-    const state4: State= {
-      id: 3,
-      name: 'State 4',
-      id_panel: 0,
-      tasks: []
-    }
-
-
+    debugger;
+    const id = this.activatedRoute.snapshot.params.id;
     this.panel = {
-      id: 0,
-      name: "Panel de prueba",
-      id_user: 0,
-      states: [state1, state2]
+      id: id,
+      states: []
     }
-    this.orderTasks();
+    this.loadDataFromPanel(id);
+    debugger;
+  }
+
+
+  loadDataFromPanel(id) {
+    /*return this.stateService.getStatesByPanel(id).pipe(
+      tap((res: State[]) => {
+        this.panel.states = res;
+      }),
+      map((res) => res.animalsForSale.map((product) => this.productCardUtils.parseAnimalsForSaleToProductCard(product)))
+    );*/
+
+    this.stateService
+      .getStatesByPanel(id).pipe(
+      tap(
+        (states: State[]) => {
+          states.map((state: State) => {
+            this.taskService.getTasksByState(state.id).subscribe(
+              (tasks: Task[]) => {
+                debugger;
+                state.tasks = tasks;
+                this.panel.states.push(state);
+              });
+          })
+        }
+      )
+      ).subscribe();
+      
+        
   }
 
 
@@ -163,43 +143,4 @@ export class ViewPanelComponent implements OnInit {
   }
 
 
-  public removeState(i: number) {
-    this.statesDeleted.push(this.panel.states[i])
-    this.panel.states.splice(i,1);
-  }
-
-
-  public saveChanges() {
-    this.tasksDeleted.filter(task => {
-      task.new;
-    })
-
-    const statesToCreate = this.panel.states.filter(state=> {
-      state.new;
-    });
-
-    const statestoUpdate = this.panel.states.filter(state=> {
-      !state.new;
-    });
-
-    const statesToDelete = this.statesDeleted.filter(state => {
-      !state.new;
-    });
-
-    const tasksToCreate = [];
-    const tasksToUpdate = [];
-    Array.from(this.panel.states).forEach(state => {
-      tasksToCreate.concat(state.tasks.filter(task => {
-        task.new;
-      }));
-      tasksToUpdate.concat(state.tasks.filter(task => {
-        !task.new;
-      }));
-    });
-
-    const tasksToDelete = this.tasksDeleted.filter(task => 
-      !task.new
-    );
-
-  }
 }
