@@ -17,8 +17,8 @@ import { State } from "../model/state";
         return this.http.get(`${Urls.API_GATEWAY}/state/${id}/tasks`);
   }
 
-  public deleteTask(task: Task) {
-        return this.http.delete(`${Urls.API_GATEWAY}/task/${task.id}/states`);
+  public deleteTask(id) {
+        return this.http.delete(`${Urls.API_GATEWAY}/task/${id}`);
   }
 
   public updateTask(task: Task) {

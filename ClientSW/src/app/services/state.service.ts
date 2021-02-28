@@ -24,7 +24,7 @@ import { State } from "../model/state";
     return this.http.put(`${Urls.API_GATEWAY}/state/`, state);
   }
 
-  public savePanel(state: State) {
+  public saveState(state: State) {
     return this.http.post(`${Urls.API_GATEWAY}/state/`, state);
   }
 

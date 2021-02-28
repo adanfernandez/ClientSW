@@ -36,18 +36,10 @@ export class ViewPanelComponent implements OnInit {
       states: []
     }
     this.loadDataFromPanel(id);
-    debugger;
   }
 
 
   loadDataFromPanel(id) {
-    /*return this.stateService.getStatesByPanel(id).pipe(
-      tap((res: State[]) => {
-        this.panel.states = res;
-      }),
-      map((res) => res.animalsForSale.map((product) => this.productCardUtils.parseAnimalsForSaleToProductCard(product)))
-    );*/
-
     this.stateService
       .getStatesByPanel(id).pipe(
       tap(
@@ -55,7 +47,6 @@ export class ViewPanelComponent implements OnInit {
           states.map((state: State) => {
             this.taskService.getTasksByState(state.id).subscribe(
               (tasks: Task[]) => {
-                debugger;
                 state.tasks = tasks;
                 this.panel.states.push(state);
               });
@@ -63,8 +54,6 @@ export class ViewPanelComponent implements OnInit {
         }
       )
       ).subscribe();
-      
-        
   }
 
 
@@ -106,6 +95,8 @@ export class ViewPanelComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+    console.log(event.container.data[0]['id']);
+    this.deleteTask(event.container.data[0]['id']);
   }  
 
   openDialogState(): void {
@@ -141,6 +132,24 @@ export class ViewPanelComponent implements OnInit {
       }
     });
   }
+
+  saveTask(task: Task) {
+    this.taskService.saveTask(task).subscribe();
+  }
+
+  deleteTask(task) {
+    this.taskService.deleteTask(task).subscribe();
+  }
+
+  saveState(state: State) {
+    this.stateService.saveState(state).subscribe();
+  }
+
+  deleteState(id) {
+    this.stateService.deleteState(id).subscribe();
+  }
+
+
 
 
 }
