@@ -13,7 +13,7 @@
                     <button class="button-add" (click)="openDialogTask(i)">Nueva tarea</button>
                 </div>
             </div>
-            <div cdkDropList [cdkDropListData]="state.tasks " class="list" (cdkDropListDropped)="drop($event) ">
+            <div cdkDropList [cdkDropListData]="state.tasks " class="list" (cdkDropListDropped)="drop($event, state.id) ">
                 <div class="box margin-top" *ngFor="let item of state.tasks " cdkDrag>
                     {{item.title}}
                 </div>

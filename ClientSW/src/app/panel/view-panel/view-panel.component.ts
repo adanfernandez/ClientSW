@@ -66,7 +66,7 @@ export class ViewPanelComponent implements OnInit {
   }
 
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>, id) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -75,15 +75,18 @@ export class ViewPanelComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
-    this.panel.states.forEach(state => {
-      const idState = state.id;
-      state.tasks.map(task => {
-        task.id_state = idState;
-        task.place = event.currentIndex;
-      })
-    })
-    console.log(this.panel.states);
+    debugger;
+
+    if(event.container.data[event.currentIndex]['stateId'] != id) {
+      event.container.data[event.currentIndex]['stateId'] = id;
+      console.log(event.container.data[event.currentIndex]);
+      this.updateTask( event.container.data[event.currentIndex]);
+    }
   }  
+
+  updateTask(task) {
+    this.taskService.updateTask(task).subscribe();
+  }
 
 
   dropRemove(event: CdkDragDrop<string[]>) {
@@ -111,7 +114,8 @@ export class ViewPanelComponent implements OnInit {
           name: result,
           tasks: []
         }
-        this.panel.states.push(state);
+        this.saveState(state);
+        this.loadDataFromPanel(this.panel.id);
       }
     });
   }
@@ -126,15 +130,19 @@ export class ViewPanelComponent implements OnInit {
       if(result) {
         const task: Task = {
           title: result,
-          id_state: 0
+          stateId: 0
         }
-        this.panel.states[index].tasks.push(task);
+        this.saveTask(task).subscribe(res => {
+          this.taskService.getTasksByState(index).subscribe((tasks: Task[]) => {
+            this.panel.states[index].tasks = tasks;
+          });
+        });
       }
     });
   }
 
   saveTask(task: Task) {
-    this.taskService.saveTask(task).subscribe();
+    return this.taskService.saveTask(task);
   }
 
   deleteTask(task) {

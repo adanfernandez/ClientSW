@@ -22,7 +22,7 @@ import { State } from "../model/state";
   }
 
   public updateTask(task: Task) {
-    return this.http.put(Urls.API_GATEWAY + CommonUrls.TASK,  task);
+    return this.http.put(`${Urls.API_GATEWAY}/task/`, task);
   }
 
   public saveTask(task: Task) {

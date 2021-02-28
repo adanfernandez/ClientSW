@@ -5,7 +5,7 @@ export interface Task {
     expirationDate?: Date;
     description?: string;
     place?: number;
-    id_state: number;
+    stateId: number;
     new?: boolean;
 
 }
