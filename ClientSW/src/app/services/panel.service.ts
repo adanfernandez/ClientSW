@@ -12,15 +12,15 @@ import { CommonUrls } from '../shared/common-urls';
   constructor(private http: HttpClient) {}
 
   public getPanelFromUser(id) {
-    return this.http.get(`${Urls.API_GATEWAY}/user/${id}/panel`);
+    return this.http.get(`${Urls.API_GATEWAY}/users/${id}/panels`);
   }
 
   public deletePanel(panel: Panel) {
-    return this.http.delete(`${Urls.API_GATEWAY}/panel/${panel.id}`);
+    return this.http.delete(`${Urls.API_GATEWAY}/panels/${panel.id}`);
   }
 
   public updatePanel(panel: Panel) {
-    return this.http.put(`${Urls.API_GATEWAY}/panel`, panel);
+    return this.http.put(`${Urls.API_GATEWAY}/panels`, panel);
   }
 
   public savePanel(panel: Panel) {

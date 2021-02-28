@@ -19,7 +19,7 @@ export class UserService {
   
   public login(user: User) {
       //return of(user);
-      return this.http.post(`${Urls.API_GATEWAY}/user/login`, user).pipe(
+      return this.http.post(`${Urls.API_GATEWAY}/users/login`, user).pipe(
         map((res: any) => {
             this.guardarStorage(res.id, res.token, res);
             console.log('Token renovado');
@@ -35,7 +35,7 @@ export class UserService {
     //return of(user);  
     const headersObject = new HttpHeaders();
 
-    return this.http.post(`${Urls.API_GATEWAY}/user/register`, user);
+    return this.http.post(`${Urls.API_GATEWAY}/users/register`, user);
   }
 
 

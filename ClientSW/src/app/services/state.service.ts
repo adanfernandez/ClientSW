@@ -13,19 +13,19 @@ import { State } from "../model/state";
   constructor(private http: HttpClient) {}
 
   public getStatesByPanel(id) {
-    return this.http.get(`${Urls.API_GATEWAY}/panel/${id}/states`);
+    return this.http.get(`${Urls.API_GATEWAY}/panels/${id}/states`);
   }
 
   public deleteState(state: State) {
-        return this.http.delete(`${Urls.API_GATEWAY}/state/${state.id}`);
+        return this.http.delete(`${Urls.API_GATEWAY}/states/${state.id}`);
   }
 
   public updateState(state: State) {
-    return this.http.put(`${Urls.API_GATEWAY}/state/`, state);
+    return this.http.put(`${Urls.API_GATEWAY}/states/`, state);
   }
 
   public saveState(state: State) {
-    return this.http.post(`${Urls.API_GATEWAY}/state/`, state);
+    return this.http.post(`${Urls.API_GATEWAY}/states/`, state);
   }
 
 }

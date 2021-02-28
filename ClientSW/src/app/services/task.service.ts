@@ -14,19 +14,19 @@ import { State } from "../model/state";
   constructor(private http: HttpClient) {}
 
   public getTasksByState(id) {
-        return this.http.get(`${Urls.API_GATEWAY}/state/${id}/tasks`);
+        return this.http.get(`${Urls.API_GATEWAY}/states/${id}/tasks`);
   }
 
   public deleteTask(id) {
-        return this.http.delete(`${Urls.API_GATEWAY}/task/${id}`);
+        return this.http.delete(`${Urls.API_GATEWAY}/tasks/${id}`);
   }
 
   public updateTask(task: Task) {
-    return this.http.put(`${Urls.API_GATEWAY}/task/`, task);
+    return this.http.put(`${Urls.API_GATEWAY}/tasks/`, task);
   }
 
   public saveTask(task: Task) {
-    return this.http.post(`${Urls.API_GATEWAY}/task/`, task);
+    return this.http.post(`${Urls.API_GATEWAY}/tasks/`, task);
   }
 
 }
