@@ -17,12 +17,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public showLogout() {
-    return localStorage.get("id");
+  public showLogout() {    
+    return localStorage.getItem("id");
   }
 
   logout() {
     this.userService.user = null;
+    localStorage.clear()
     this.router.navigateByUrl("/login");
   }
 

@@ -2,7 +2,8 @@
     <mat-toolbar color="primary">
         <span>WIPApp</span>
     </mat-toolbar>
-    <div>
-        <button *ngIf="" class="button-logout right" (click)="logout()">Logout</button>
-    </div>
+</div>
+
+<div *ngIf="showLogout()">
+    <button class="button-logout right" (click)="logout()">Logout</button>
 </div>
