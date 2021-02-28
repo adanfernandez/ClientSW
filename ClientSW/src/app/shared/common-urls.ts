@@ -10,5 +10,5 @@ export class CommonUrls {
     public static readonly TASK = 'task/';
     public static readonly CREATE = '/create/';
     public static readonly VIEW = '/view/';
-    public static readonly LIST = 'list/';
+    public static readonly LIST = '/list/';
 }

@@ -5,13 +5,14 @@ import { Panel } from "../model/panel";
 import { Urls } from './Urls-back';
 import { CommonUrls } from '../shared/common-urls';
 
-@Injectable()
-export class PanelService {
+@Injectable({
+  providedIn: 'root'
+})export class PanelService {
 
   constructor(private http: HttpClient) {}
 
-  public getPanelFromUser(user: User) {
-    return this.http.get(`${Urls.API_GATEWAY}/panel/user/${user.id}`);
+  public getPanelFromUser(id) {
+    return this.http.get(`${Urls.API_GATEWAY}/user/${id}/panel`);
   }
 
   public deletePanel(panel: Panel) {

@@ -12,10 +12,7 @@ export class GuardsComponent implements  CanActivate {
 
   constructor(private router: Router, private userService: UserService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    debugger;
-
-    if (!this.userService.user) {
-      // redirect to some view explaining what happened
+    if (!localStorage.getItem("id")) {
       this.router.navigateByUrl('/login');
       return false;
     } else {

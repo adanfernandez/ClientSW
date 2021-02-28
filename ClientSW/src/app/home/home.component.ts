@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   public urlPanelCreation = CommonUrls.PANEL + CommonUrls.CREATE;
   public urlPanelView = CommonUrls.PANEL + CommonUrls.VIEW;
-
+  public urlPanelList = CommonUrls.PANEL  + CommonUrls.LIST;
 
 
   constructor() { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 import { UserService } from '../services/user.service';
 import { CommonUrls } from '../shared/common-urls';
 
@@ -25,12 +26,7 @@ export class LoginComponent implements OnInit {
     this.userService.login({
       email: this.email,
       password: this.password
-    }).subscribe( res => {
-      localStorage.setItem("user", this.email);
-      debugger;
-      this.userService.user = {
-        email: this.email
-      }
+    }).subscribe( (res) => {
       this.router.navigateByUrl(CommonUrls.HOME);
     }, err => {
       this.errMessage = "Credenciales erróneas";
