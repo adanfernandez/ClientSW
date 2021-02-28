@@ -26,7 +26,7 @@ import { State } from "../model/state";
   }
 
   public saveTask(task: Task) {
-    return this.http.post(Urls.API_GATEWAY + CommonUrls.TASK,  task);
+    return this.http.post(`${Urls.API_GATEWAY}/task/`, task);
   }
 
 }

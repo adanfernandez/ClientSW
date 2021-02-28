@@ -3,6 +3,8 @@ import { Panel } from 'src/app/model/panel';
 import { State } from 'src/app/model/state';
 import { PanelService } from '../../services/panel.service';
 import { StateService } from '../../services/state.service';
+import { Router } from '@angular/router';
+import { CommonUrls } from '../../shared/common-urls';
 
 @Component({
   selector: 'app-create-panel',
@@ -11,7 +13,7 @@ import { StateService } from '../../services/state.service';
 })
 export class CreatePanelComponent implements OnInit {
 
-  constructor(public panelService: PanelService, public stateService: StateService) { }
+  constructor(public panelService: PanelService, public stateService: StateService, private router: Router) { }
 
   states: string[] = [];
 
@@ -39,7 +41,11 @@ export class CreatePanelComponent implements OnInit {
       userId: Number(id),
       name: this.title,
     }
-    this.panelService.savePanel(panel).subscribe();
+    this.panelService.savePanel(panel).subscribe(
+      res => {
+        this.router.navigateByUrl(CommonUrls.HOME);
+      }
+    );
       /*res =>{
         this.states.map((state: string) => {
           const stateAdd: State = {

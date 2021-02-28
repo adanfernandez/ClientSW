@@ -29,7 +29,6 @@ export class ViewPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
     const id = this.activatedRoute.snapshot.params.id;
     this.panel = {
       id: id,
@@ -75,8 +74,6 @@ export class ViewPanelComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
-    debugger;
-
     if(event.container.data[event.currentIndex]['stateId'] != id) {
       event.container.data[event.currentIndex]['stateId'] = id;
       console.log(event.container.data[event.currentIndex]);
@@ -130,7 +127,7 @@ export class ViewPanelComponent implements OnInit {
       if(result) {
         const task: Task = {
           title: result,
-          stateId: 0
+          stateId: ++index
         }
         this.saveTask(task).subscribe(res => {
           this.taskService.getTasksByState(index).subscribe((tasks: Task[]) => {
