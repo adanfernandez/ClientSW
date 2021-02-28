@@ -109,7 +109,9 @@ export class ViewPanelComponent implements OnInit {
       if(result) {
         const state: State = {
           name: result,
-          tasks: []
+          place: this.panel.states.length,
+          tasks: [],
+          panelId: this.panel.id
         }
         this.saveState(state);
         this.loadDataFromPanel(this.panel.id);
@@ -127,7 +129,7 @@ export class ViewPanelComponent implements OnInit {
       if(result) {
         const task: Task = {
           title: result,
-          stateId: ++index
+          stateId: this.panel.states[index].id
         }
         this.saveTask(task).subscribe(res => {
           this.taskService.getTasksByState(index).subscribe((tasks: Task[]) => {
@@ -147,7 +149,15 @@ export class ViewPanelComponent implements OnInit {
   }
 
   saveState(state: State) {
-    this.stateService.saveState(state).subscribe();
+    this.stateService.saveState(state).subscribe(res =>{
+      const id = this.activatedRoute.snapshot.params.id;
+      this.panel = {
+        id: id,
+        states: []
+      }
+      this.loadDataFromPanel(id);
+    }      
+    );
   }
 
   deleteState(state, i) {

@@ -24,6 +24,6 @@ import { CommonUrls } from '../shared/common-urls';
   }
 
   public savePanel(panel: Panel) {
-    return this.http.post(`${Urls.API_GATEWAY}/panel`, panel);
+    return this.http.post(`${Urls.API_GATEWAY}/panels`, panel);
   }
 }
