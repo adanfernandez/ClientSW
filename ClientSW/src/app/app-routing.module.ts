@@ -13,10 +13,12 @@ const routes: Routes = [
   },
   {
       path: CommonUrls.LOGIN,
+      canActivate: [GuardsComponent],
       loadChildren: () => import('./login/login.module').then(module => module.LoginModule)
   },
   {
       path: CommonUrls.REGISTER,
+      canActivate: [GuardsComponent],
       loadChildren: () => import('./register/register.module').then(module => module.RegisterModule)
   },
   {
