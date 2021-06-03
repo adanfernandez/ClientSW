@@ -19,7 +19,7 @@ export class UserService {
   
   public login(user: User) {
       //return of(user);
-      return this.http.post(`${Urls.API_GATEWAY}/users/login`, user).pipe(
+      /*return this.http.post(`${Urls.API_GATEWAY}/users/login`, user).pipe(
         map((res: any) => {
             this.guardarStorage(res.id, res.token, res);
             console.log('Token renovado');
@@ -28,7 +28,14 @@ export class UserService {
         ), catchError( err => {
           return Observable.throw(err);
         })
-      );;
+      );*/
+      return this.http.post<any>(`${Urls.API_GATEWAY}/users/login`, user, {observe: 'response' as 'body'}).pipe(
+        map((res: any) => {          
+              this.guardarStorage(res.body.id, res.headers.get("authorization"), res.body);
+              console.log('Token renovado');
+              return true;
+          }
+        ));
   }
 
   public register(user: User) {

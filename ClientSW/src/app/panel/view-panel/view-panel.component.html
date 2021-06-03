@@ -15,7 +15,8 @@
             </div>
             <div cdkDropList [cdkDropListData]="state.tasks " class="list" (cdkDropListDropped)="drop($event, state.id) ">
                 <div class="box margin-top" *ngFor="let item of state.tasks " cdkDrag>
-                    {{item.title}}
+                    <h4>{{item.title}}</h4>
+                    <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
                 </div>
             </div>
         </div>

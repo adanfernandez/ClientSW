@@ -48,6 +48,7 @@ export class ViewPanelComponent implements OnInit {
               (tasks: Task[]) => {
                 state.tasks = tasks;
                 this.panel.states.push(state);
+                this.panel.states = this.panel.states.sort((state1, state2) => state1.id - state2.id);
               });
           })
         }
@@ -150,6 +151,7 @@ export class ViewPanelComponent implements OnInit {
 
   saveState(state: State) {
     this.stateService.saveState(state).subscribe(res =>{
+      debugger;
       const id = this.activatedRoute.snapshot.params.id;
       this.panel = {
         id: id,
