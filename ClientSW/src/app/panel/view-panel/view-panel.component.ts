@@ -167,6 +167,18 @@ export class ViewPanelComponent implements OnInit {
     this.stateService.deleteState(state).subscribe();
   }
 
+  getTimeByTimeStamp(timestamp) {
+    const date: Date = new Date(timestamp);
+    const month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
+    const day = date.getDay() > 9 ? date.getDay() : '0' + date.getDay();
+    const fecha = `${date.getFullYear()}-${month}-${day}`;
+
+    const hours = date.getHours() > 9 ? date.getHours() : '0' + date.getHours();
+    const minutes = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes();
+    const time = `${hours}:${minutes}`;
+
+    return [fecha, time];
+  }
 
 
 

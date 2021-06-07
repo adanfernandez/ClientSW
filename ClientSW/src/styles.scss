@@ -181,3 +181,12 @@ body {
 .err {
     color: red;
 }
+
+.grid-100 {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.width-webkit-fill-available {
+    width: -webkit-fill-available;
+}

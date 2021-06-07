@@ -15,8 +15,18 @@
             </div>
             <div cdkDropList [cdkDropListData]="state.tasks " class="list" (cdkDropListDropped)="drop($event, state.id) ">
                 <div class="box margin-top" *ngFor="let item of state.tasks " cdkDrag>
-                    <h4>{{item.title}}</h4>
-                    <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+
+                    <div class="grid-100 text-center width-webkit-fill-available">
+                        <h4>{{item.title}}</h4>
+                        <div>
+                            <input type="date" id="start" name="trip-start" value="{{getTimeByTimeStamp(item.expirationDate)[0]}}">
+                            <input type="time" value="{{getTimeByTimeStamp(item.expirationDate)[1]}}">
+                            <button>Quitar fecha de caducidad</button>
+                            <p>{{getTimeByTimeStamp(item.expirationDate)[0]}}</p>
+                        </div>
+                    </div>
+
+                    <!--min="2018-01-01" max="20-12-31">-->
                 </div>
             </div>
         </div>
