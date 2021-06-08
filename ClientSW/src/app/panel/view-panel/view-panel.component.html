@@ -21,18 +21,18 @@
                         <div *ngIf="item.expirationDate">
                             <input type="date" id="date-{{item.id}}" name="trip-start" value="{{getTimeByTimeStamp(item.expirationDate)[0]}}" (change)="item.saved = false">
                             <input type="time" id="time-{{item.id}}" value="{{getTimeByTimeStamp(item.expirationDate)[1]}}" (change)="item.saved = false">
-
-                            <button [disabled]="item.saved" (click)="updateDateOfTask(item)" class="button-transparent pointer">
-                                <img src="assets/img/save-icon.png">
-                            </button>
-
                             <button class="button-transparent pointer" (click)="addOrRemoveDateToTask(item)">
                                 <img src="assets/img/delete-icon.png">
                             </button>
                         </div>
+
                         <div *ngIf="!item.expirationDate">
                             <button class="button-add-time" (click)="addOrRemoveDateToTask(item)">Añadir fecha de vencimiento</button>
                         </div>
+                        <button [disabled]="item.saved" (click)="updateDateOfTask(item)">
+                            <!-- <img src="assets/img/save-icon.png">-->
+                            Guardar datos de vencimiento
+                         </button>
                     </div>
                 </div>
             </div>

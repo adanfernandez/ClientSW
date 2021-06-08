@@ -10,6 +10,8 @@ import { PanelService } from '../../services/panel.service';
 import { StateService } from '../../services/state.service';
 import { tap, map } from 'rxjs/operators';
 import { TaskService } from '../../services/task.service';
+import { DialogoConfirmacionComponent } from '../../dialog-confirmation-component/dialog-confirmation-component.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-panel',
@@ -24,8 +26,7 @@ export class ViewPanelComponent implements OnInit {
   tasksDeleted = [];
   statesDeleted = [];
 
-  constructor(public dialog: MatDialog, private activatedRoute: ActivatedRoute, private panelService: PanelService, private stateService: StateService, private taskService: TaskService) { 
-    console.log("A");
+  constructor(public dialog: MatDialog, private activatedRoute: ActivatedRoute, private panelService: PanelService, private stateService: StateService, private taskService: TaskService, private snackBar: MatSnackBar) { 
   }
 
   ngOnInit(): void {
@@ -69,7 +70,7 @@ export class ViewPanelComponent implements OnInit {
   }
 
 
-  drop(event: CdkDragDrop<string[]>, id) {
+  drop(event: CdkDragDrop<string[]>, id, saved) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -88,6 +89,9 @@ export class ViewPanelComponent implements OnInit {
   updateTask(task) {
     this.taskService.updateTask(task).subscribe( res => {
       task.saved = true;
+      this.snackBar.open('Guardado correctamente', 'Ok', {
+        duration: 1000
+      });
     });
   }
 
@@ -109,9 +113,21 @@ export class ViewPanelComponent implements OnInit {
       task.expirationDate = da;
     }
     
-    this.taskService.updateTask(task).subscribe(res =>{
-      task.saved = true;
+    this.dialog.open(DialogoConfirmacionComponent, {
+      data: `¿Estás seguro de modificar la fecha de vencimiento de esta tarea?`
+    })
+    .afterClosed()
+    .subscribe((confirmado: Boolean) => {
+      if (confirmado) {
+        this.taskService.updateTask(task).subscribe(res =>{
+          task.saved = true;
+          this.snackBar.open('Guardado correctamente', 'Ok', {
+            duration: 1000
+          });
+        });
+      }
     });
+    
   }
 
 
@@ -153,7 +169,6 @@ export class ViewPanelComponent implements OnInit {
       width: '25%',
       data: {welcomeMessage: "Añadir una tarea", paramName: "Nombre de la tarea"}
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         const task: Task = {
@@ -161,8 +176,13 @@ export class ViewPanelComponent implements OnInit {
           stateId: this.panel.states[index].id
         }
         this.saveTask(task).subscribe(res => {
+          index = index + 1;
           this.taskService.getTasksByState(index).subscribe((tasks: Task[]) => {
+            index = index - 1;
             this.panel.states[index].tasks = tasks;
+            this.panel.states[index].tasks.map(tarea => {
+              tarea.saved = true;
+            })
           });
         });
       }
@@ -174,7 +194,11 @@ export class ViewPanelComponent implements OnInit {
   }
 
   deleteTask(task) {
-    this.taskService.deleteTask(task).subscribe();
+    this.taskService.deleteTask(task).subscribe(res => {
+      this.snackBar.open('Borrado correctamente', 'Ok', {
+        duration: 1000
+      });
+    });
   }
 
   saveState(state: State) {
@@ -207,9 +231,8 @@ export class ViewPanelComponent implements OnInit {
     return [fecha, time];
   }
 
-  
-
   addOrRemoveDateToTask(task: Task) {
+    task.saved = false;
     if(task.expirationDate) {
       task.expirationDate = null;
     } else {
