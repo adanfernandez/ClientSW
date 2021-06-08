@@ -6,6 +6,5 @@ export interface Task {
     description?: string;
     place?: number;
     stateId: number;
-    new?: boolean;
-
+    saved?: boolean;
 }

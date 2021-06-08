@@ -18,23 +18,30 @@
 
                     <div class="grid-100 text-center width-webkit-fill-available">
                         <h4>{{item.title}}</h4>
-                        <div>
-                            <input type="date" id="start" name="trip-start" value="{{getTimeByTimeStamp(item.expirationDate)[0]}}">
-                            <input type="time" value="{{getTimeByTimeStamp(item.expirationDate)[1]}}">
-                            <button>Quitar fecha de caducidad</button>
-                            <p>{{getTimeByTimeStamp(item.expirationDate)[0]}}</p>
+                        <div *ngIf="item.expirationDate">
+                            <input type="date" id="date-{{item.id}}" name="trip-start" value="{{getTimeByTimeStamp(item.expirationDate)[0]}}" (change)="item.saved = false">
+                            <input type="time" id="time-{{item.id}}" value="{{getTimeByTimeStamp(item.expirationDate)[1]}}" (change)="item.saved = false">
+
+                            <button [disabled]="item.saved" (click)="updateDateOfTask(item)" class="button-transparent pointer">
+                                <img src="assets/img/save-icon.png">
+                            </button>
+
+                            <button class="button-transparent pointer" (click)="addOrRemoveDateToTask(item)">
+                                <img src="assets/img/delete-icon.png">
+                            </button>
+                        </div>
+                        <div *ngIf="!item.expirationDate">
+                            <button class="button-add-time" (click)="addOrRemoveDateToTask(item)">Añadir fecha de vencimiento</button>
                         </div>
                     </div>
-
-                    <!--min="2018-01-01" max="20-12-31">-->
                 </div>
             </div>
         </div>
     </div>
-    <div class="margin-top">
-        <div id="even" cdkDropList [cdkDropListData]="tasksDeleted" class="example-list" (cdkDropListDropped)="dropRemove($event)">
-            <div class="box box-remove-task text-center">
-                <h4 class="center-title">Arrastra una tarea aquí para borrarla
+    <div class=" margin-top ">
+        <div id="even " cdkDropList [cdkDropListData]="tasksDeleted " class="example-list " (cdkDropListDropped)="dropRemove($event) ">
+            <div class="box box-remove-task text-center ">
+                <h4 class="center-title ">Arrastra una tarea aquí para borrarla
                 </h4>
             </div>
         </div>

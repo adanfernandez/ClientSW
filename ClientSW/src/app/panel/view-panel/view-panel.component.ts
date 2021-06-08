@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Panel } from 'src/app/model/panel';
 import { State } from 'src/app/model/state';
 import { Task } from 'src/app/model/task';
@@ -47,6 +47,9 @@ export class ViewPanelComponent implements OnInit {
             this.taskService.getTasksByState(state.id).subscribe(
               (tasks: Task[]) => {
                 state.tasks = tasks;
+                state.tasks.map(task => {
+                  task.saved = true;
+                });
                 this.panel.states.push(state);
                 this.panel.states = this.panel.states.sort((state1, state2) => state1.id - state2.id);
               });
@@ -83,7 +86,32 @@ export class ViewPanelComponent implements OnInit {
   }  
 
   updateTask(task) {
-    this.taskService.updateTask(task).subscribe();
+    this.taskService.updateTask(task).subscribe( res => {
+      task.saved = true;
+    });
+  }
+
+  updateDateOfTask(task: Task) {
+    let date = document.getElementById(`date-${task.id}`);
+    let time = document.getElementById(`time-${task.id}`);
+
+    if(date) {
+      const fecha = (<HTMLInputElement>date).value.split('-');
+      const hora = (<HTMLInputElement>time).value.split(':');
+  
+      const da = new Date();
+      da.setFullYear(Number(fecha[0]));
+      da.setMonth(Number(fecha[1])-1);
+      da.setDate(Number(fecha[2]));
+  
+      da.setHours(Number(hora[0]));
+      da.setMinutes(Number(hora[1]));
+      task.expirationDate = da;
+    }
+    
+    this.taskService.updateTask(task).subscribe(res =>{
+      task.saved = true;
+    });
   }
 
 
@@ -151,7 +179,6 @@ export class ViewPanelComponent implements OnInit {
 
   saveState(state: State) {
     this.stateService.saveState(state).subscribe(res =>{
-      debugger;
       const id = this.activatedRoute.snapshot.params.id;
       this.panel = {
         id: id,
@@ -169,8 +196,8 @@ export class ViewPanelComponent implements OnInit {
 
   getTimeByTimeStamp(timestamp) {
     const date: Date = new Date(timestamp);
-    const month = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
-    const day = date.getDay() > 9 ? date.getDay() : '0' + date.getDay();
+    const month = date.getMonth() > 9 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1);
+    const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
     const fecha = `${date.getFullYear()}-${month}-${day}`;
 
     const hours = date.getHours() > 9 ? date.getHours() : '0' + date.getHours();
@@ -180,6 +207,17 @@ export class ViewPanelComponent implements OnInit {
     return [fecha, time];
   }
 
+  
+
+  addOrRemoveDateToTask(task: Task) {
+    if(task.expirationDate) {
+      task.expirationDate = null;
+    } else {
+      const fecha = new Date();
+      fecha.setDate(fecha.getDate() + 1);
+      task.expirationDate = fecha;
+    }
+  }
 
 
 }
