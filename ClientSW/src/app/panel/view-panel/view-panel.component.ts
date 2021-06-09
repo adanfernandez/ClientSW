@@ -177,7 +177,6 @@ export class ViewPanelComponent implements OnInit {
         }
         this.saveTask(task).subscribe(res => {
           this.taskService.getTasksByState(task.stateId).subscribe((tasks: Task[]) => {
-            //index = index - 1;
             this.panel.states.map(state => {
               if(state.id == task.stateId) {
                 state.tasks = tasks;
