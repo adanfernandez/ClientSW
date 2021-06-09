@@ -30,16 +30,13 @@ export class ViewPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      debugger;
       const id = this.activatedRoute.snapshot.params.id;
       this.panel = {
         id: id,
-        states: [],
-        name: params.get('name')
+        states: []
+//        name: 
       };
       this.loadDataFromPanel(id);
-    });
   }
 
 
@@ -57,6 +54,9 @@ export class ViewPanelComponent implements OnInit {
                 });
                 this.panel.states.push(state);
                 this.panel.states = this.panel.states.sort((state1, state2) => state1.id - state2.id);
+                this.route.queryParamMap.subscribe(params => {
+                  this.panel.name = params.get('name');
+                });
               });
           })
         }
@@ -163,7 +163,6 @@ export class ViewPanelComponent implements OnInit {
           panelId: this.panel.id
         }
         this.saveState(state);
-     //   this.loadDataFromPanel(this.panel.id);
       }
     });
   }
