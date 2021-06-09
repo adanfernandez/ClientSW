@@ -1,4 +1,7 @@
 <div>
+    <div *ngIf="panels.length > 0">
+        <h1>Paneles disponibles:</h1>
+    </div>
     <mat-list role="list">
         <mat-list-item role="listitem" class="margin-top" *ngFor="let panel of panels">
             <div class="width-100 pointer" [routerLink]="'/' + urlPanelView + '/' + panel.id">
@@ -13,5 +16,5 @@
     <div *ngIf="panels.length == 0">
         <h1>No tienes paneles asociados</h1>
     </div>
-    <span [routerLink]="'/' + urlPanelCreation" colsplan="1" class="text-center century-gothic pointer create">Crear tablero</span>
+    <span [routerLink]="'/' + urlPanelCreation" colsplan="1" class="text-center century-gothic pointer create">Crear panel</span>
 </div>

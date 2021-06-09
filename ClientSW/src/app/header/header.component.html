@@ -1,9 +1,12 @@
-<div class="pointer" [routerLink]="'/' + urlHome">
+<div>
     <mat-toolbar color="primary">
-        <span>WIPApp</span>
+        <span class="pointer" [routerLink]="'/' + urlHome">WIPApp</span>
     </mat-toolbar>
 </div>
 
 <div *ngIf="showLogout()">
-    <button class="button-logout right" (click)="logout()">Logout</button>
+    <button class="button-logout right" (click)="logout()">
+        <img src="../../assets/img/sign-out-alt-solid.svg" alt="Salir de sesión"  width="20" height="20"/>
+        <span> Salir de sesión </span>
+    </button>
 </div>
