@@ -159,7 +159,7 @@ export class ViewPanelComponent implements OnInit {
           panelId: this.panel.id
         }
         this.saveState(state);
-        this.loadDataFromPanel(this.panel.id);
+     //   this.loadDataFromPanel(this.panel.id);
       }
     });
   }

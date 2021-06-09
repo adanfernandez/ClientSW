@@ -19,6 +19,7 @@ export class ListPanelComponent implements OnInit {
   constructor(public panelService: PanelService, public userService: UserService) { }
 
   public urlPanelView = CommonUrls.PANEL + CommonUrls.VIEW;
+  public urlPanelCreation = CommonUrls.PANEL + CommonUrls.CREATE;
 
   ngOnInit(): void {
     this.panelService.getPanelFromUser(localStorage.getItem("id")).subscribe(
