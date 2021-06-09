@@ -176,13 +176,16 @@ export class ViewPanelComponent implements OnInit {
           stateId: this.panel.states[index].id
         }
         this.saveTask(task).subscribe(res => {
-          index = index + 1;
-          this.taskService.getTasksByState(index).subscribe((tasks: Task[]) => {
-            index = index - 1;
-            this.panel.states[index].tasks = tasks;
-            this.panel.states[index].tasks.map(tarea => {
-              tarea.saved = true;
-            })
+          this.taskService.getTasksByState(task.stateId).subscribe((tasks: Task[]) => {
+            //index = index - 1;
+            this.panel.states.map(state => {
+              if(state.id == task.stateId) {
+                state.tasks = tasks;
+                state.tasks.map(tarea => {
+                  tarea.saved = true;
+                });
+              }
+            });
           });
         });
       }
