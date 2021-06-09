@@ -1,3 +1,4 @@
+<h1 class="italic">{{panel?.name }}</h1>
 <button class="button-add" (click)="openDialogState()">
     Nuevo estado
 </button>
@@ -39,10 +40,9 @@
         </div>
     </div>
     <div class=" margin-top ">
-        <div id="even " cdkDropList [cdkDropListData]="tasksDeleted " class="example-list " (cdkDropListDropped)="dropRemove($event) ">
+        <div id="even " class="example-list " (cdkDropListDropped)="dropRemove($event) ">
             <div class="box box-remove-task text-center ">
-                <h4 class="center-title ">Arrastra una tarea aquí para borrarla
-                </h4>
+                <h4 class="center-title ">Arrastra una tarea aquí para borrarla</h4>
             </div>
         </div>
     </div>

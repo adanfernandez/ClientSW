@@ -26,16 +26,20 @@ export class ViewPanelComponent implements OnInit {
   tasksDeleted = [];
   statesDeleted = [];
 
-  constructor(public dialog: MatDialog, private activatedRoute: ActivatedRoute, private panelService: PanelService, private stateService: StateService, private taskService: TaskService, private snackBar: MatSnackBar) { 
+  constructor(public dialog: MatDialog, private activatedRoute: ActivatedRoute, private panelService: PanelService, private stateService: StateService, private taskService: TaskService, private snackBar: MatSnackBar, private route : ActivatedRoute) { 
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id;
-    this.panel = {
-      id: id,
-      states: []
-    }
-    this.loadDataFromPanel(id);
+    this.route.queryParamMap.subscribe(params => {
+      debugger;
+      const id = this.activatedRoute.snapshot.params.id;
+      this.panel = {
+        id: id,
+        states: [],
+        name: params.get('name')
+      };
+      this.loadDataFromPanel(id);
+    });
   }
 
 
